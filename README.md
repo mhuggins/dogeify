@@ -43,6 +43,11 @@ core extension.
     ['I like turtles.', 'It is during our darkest moments that we must focus to see the light.'].dogify
     # => ["so turtles. wow.", "so darkest. such moments. very light. wow."]
 
+Lastly, the `Dogeify` class along with all core extensions can be loaded via
+a single require.
+
+    require 'dogeify/all'
+
 ## Contributing
 
 1. Fork it
