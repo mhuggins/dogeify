@@ -26,8 +26,8 @@ There are several ways of using Dogeify.  The first way is to go through the
 
     require 'dogeify'
 
-    dogifier = Dogify.new
-    dogifier.process('My grandmom gave me a sweater for Christmas.')
+    dogeifier = Dogeify.new
+    dogeifier.process('My grandmom gave me a sweater for Christmas.')
     # => "so grandmom. such sweater. very christmas. wow."
 
 The second way is to modify the String or Array classes by including either
@@ -37,10 +37,10 @@ core extension.
     require 'dogeify/core_ext/string'  # extends only String
     require 'dogeify/core_ext'         # extends both Array/String
 
-    'My grandmom gave me a sweater for Christmas.'.dogify
+    'My grandmom gave me a sweater for Christmas.'.dogeify
     # => "so grandmom. such sweater. very christmas. wow."
 
-    ['I like turtles.', 'It is during our darkest moments that we must focus to see the light.'].dogify
+    ['I like turtles.', 'It is during our darkest moments that we must focus to see the light.'].dogeify
     # => ["so turtles. wow.", "so darkest. such moments. very light. wow."]
 
 Lastly, the `Dogeify` class along with all core extensions can be loaded via
