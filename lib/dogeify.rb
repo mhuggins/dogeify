@@ -13,7 +13,11 @@ class Dogeify
     phrases = tagger.get_nouns(tagged_str).keys
 
     phrases = phrases.each_with_index.map { |phrase, i| "#{adjective(i)} #{phrase}." }
-    phrases << 'wow.'
+    if str.include?("n't") || str.include?("not")
+      phrases << 'plz no.'
+    else
+      phrases << ['wow.', 'amaze.', 'excite.'].sample
+    end
     phrases.join(' ')
   end
 
