@@ -1,5 +1,8 @@
 # Dogeify
 
+[![Build Status](https://secure.travis-ci.org/mhuggins/dogeify.png)](http://travis-ci.org/mhuggins/dogeify)
+[![Code Climate](https://codeclimate.com/github/mhuggins/dogeify.png)](https://codeclimate.com/github/mhuggins/dogeify)
+
 Convert English to [Doge](http://en.wikipedia.org/wiki/Doge_(meme))!
 
 Please note that this gem is using an extremely simple language natural
