@@ -9,11 +9,14 @@ class Dogeify
     @tagger = EngTagger.new
   end
 
-  def process(str)
+  def process(str, options = {})
     # Parse sentences.
     sentences = str.downcase.split(/[\.!?]+/).map(&:strip)
 
     sentences = sentences.map do |sentence|
+      # ignore any patterns in options[:ignore]
+      sentence = ignore_patterns(sentence, options[:ignore]) if options[:ignore]
+      
       # Select just the nouns.
       tagged_sentence = tagger.add_tags(sentence)
       phrases = tagger.get_nouns(tagged_sentence).keys rescue []
@@ -44,6 +47,14 @@ class Dogeify
       word.gsub!(/stion$/, 'schun')              # question => queschun, potion (unchanged)
       word.gsub!(/dog([^e]|\b)/, 'doge\1')       # dog => doge, dogs => doges, underdog => underdoge, doge (unchanged)
     end
+  end
+
+  def ignore_patterns(sentence, patterns)
+    new_sentence = sentence.dup
+    Array(patterns).map do |pattern|
+      new_sentence.gsub!(pattern, "")
+    end
+    new_sentence
   end
 
   def adjective
