@@ -56,23 +56,24 @@ describe Dogeify do
       end
     end
 
-    describe 'a pattern is ignored' do
-      let(:input)  { "\e[35;47mHello world!\e[0m" }
-      let(:output) { subject.process(input, ignore: 
-        /\e\[(\d+)(;\d+)*m/) }
+    describe 'when an ignore option is passed' do
+      let(:input) { '\e[35;47mHello world!\e[0m' }
+      let(:pattern) { /\\e\[\d+(;\d+)?m/ }
 
-      it 'removes that pattern' do
-        expect(output).to start_with "so world"
+      describe 'with a single pattern' do
+        let(:output) { subject.process(input, ignore: pattern) }
+
+        it 'removes the pattern' do
+          expect(output).to start_with 'so world.'
+        end
       end
-    end
 
-    describe 'multiple patterns are ignored' do
-      let(:input)  { "\e[35;47mHello world!\e[0m" }
-      let(:output) { subject.process(input, ignore: 
-        [/\e\[(\d+)(;\d+)*m/, /world/]) }
+      describe 'with multiple patterns' do
+        let(:output) { subject.process(input, ignore: [pattern, /world/]) }
 
-      it 'removes those patterns' do
-        expect(output).to start_with "wow."
+        it 'removes all patterns' do
+          expect(output).to start_with 'wow.'
+        end
       end
     end
   end

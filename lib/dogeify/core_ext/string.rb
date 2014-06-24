@@ -1,7 +1,7 @@
 require 'dogeify'
 
 class String
-  def dogeify
-    Dogeify.new.process(self)
+  def dogeify(options = {})
+    Dogeify.new.process(self, options)
   end
 end

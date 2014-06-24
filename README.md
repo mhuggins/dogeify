@@ -51,6 +51,19 @@ a single require.
 
     require 'dogeify/all'
 
+### Options
+
+For each of the above method calls, an optional `options` hash can be passed in
+to specify additional processing preferences.  Currently, only the `ignore`
+option exists, accepting a string/regex value (or array of string/regex values)
+that should not be converted to doge.
+
+    dogifier.process('My grandmom gave me a sweater for Christmas.', ignore: 'grandmom')
+    # => "so sweater. such christmas. wow."
+
+    'My grandmom gave me a sweater for Christmas'.dogeify(ignore: [/christmas/i, 'sweater'])
+    # => "so grandmom. wow."
+
 ## Contributing
 
 1. Fork it

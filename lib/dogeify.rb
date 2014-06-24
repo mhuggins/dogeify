@@ -14,7 +14,7 @@ class Dogeify
     sentences = str.downcase.split(/[\.!?]+/).map(&:strip)
 
     sentences = sentences.map do |sentence|
-      # ignore any patterns in options[:ignore]
+      # Ignore any provided patterns.
       sentence = ignore_patterns(sentence, options[:ignore]) if options[:ignore]
       
       # Select just the nouns.
@@ -50,11 +50,9 @@ class Dogeify
   end
 
   def ignore_patterns(sentence, patterns)
-    new_sentence = sentence.dup
-    Array(patterns).map do |pattern|
-      new_sentence.gsub!(pattern, "")
+    sentence.dup.tap do |sentence|
+      Array(patterns).map { |pattern| sentence.gsub!(pattern, '') }
     end
-    new_sentence
   end
 
   def adjective
